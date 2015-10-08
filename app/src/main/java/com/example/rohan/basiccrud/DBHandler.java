@@ -8,7 +8,9 @@ import android.content.ContentValues;
 import android.util.Log;
 
 public class DBHandler extends SQLiteOpenHelper {
- private static final int DATABASE_VERSION = 1;
+
+    public static final String TAG="rohanMessage";
+    private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "vendors.db";
     private static final String TABLE_VENDORS = "vendors";
     private static final String COLUMN_ID="_id";
@@ -23,6 +25,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 COLUMN_VENDORADDRESS+" TEXT"+
                 ");";
         db.execSQL(query);
+        Log.i(TAG,"created");
     }
 
     @Override
@@ -33,9 +36,10 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public void addVendor(Vendors vendor) {
         ContentValues values = new ContentValues();
-        values.put(COLUMN_VENDORNAME,vendor.get_vendorname());
+        values.put(COLUMN_VENDORNAME, vendor.get_vendorname());
         values.put(COLUMN_VENDORADDRESS,vendor.get_vendoraddress());
         SQLiteDatabase db = getWritableDatabase();
+        Log.i(TAG,vendor.get_vendorname());
         db.insert(TABLE_VENDORS, null, values);
         db.close();
     }

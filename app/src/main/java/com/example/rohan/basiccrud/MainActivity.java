@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         vendor_name=(EditText) findViewById(R.id.vendorname);
         vendor_address=(EditText) findViewById(R.id.vendoraddress);
         myDBHandle= new DBHandler(this,null,null,1);
-//        printDatatbase();
+        printDatatbase();
     }
 
     //Add a button click
